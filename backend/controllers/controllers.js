@@ -32,7 +32,7 @@ controllers.SignUp = async (req, res) => {
 
 }
 controllers.SignIn = async (req, res) => {
-    let { username, password, email } = req.body;
+    let { username, password } = req.body;
     let UserExists = Users.findOne({
         where: {
             username,

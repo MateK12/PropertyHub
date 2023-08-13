@@ -4,37 +4,19 @@
             <nz-col nzXl="8" nzLg="8" nzMd="8" nzSm="24" nzXs="24"></nz-col>
             <nz-col nzXl="8" nzLg="8" nzMd="8" nzSm="24" nzXs="24">
                 <nz-card nzTitle="Iniciar Sesion" id="loginCard">
-                    <form style="align-items:center; justify-content: center !important;width:30vw;" nz-form
-                        class="login-form" [formGroup]="form">
-                        <nz-form-item>
+                    <form id="contForm" nz-form class="login-form" [formGroup]="form">
+                        <h3>{{messegeFromBack}}</h3>
+                        <nz-form-control nzErrorTip="Please input your Password!">
+                            <input nzErrorTip="Please input your Password!" class="loginInput"
+                                formControlName="username" type="text" nz-input placeholder="Usuario" />
+                        </nz-form-control>
+                        <p style="color:rgb(184, 52, 52)">{{userErrorMessege}}</p>
+                        <br>
+                        <input class="loginInput" formControlName="password" type="password" nz-input
+                            placeholder="Constraseña" />
+                        <p style="color:rgb(184, 52, 52)">{{PasswordErrorMessege}}</p>
 
-                            <input class="loginInput" formControlName="user" type="text" nz-input
-                                placeholder="Username" />
-
-                        </nz-form-item>
-
-                        <nz-form-item>
-                            <nz-form-control nzErrorTip="Please input your Password!">
-                                <nz-input-group nzPrefixIcon="lock">
-                                    <input class="loginInput" formControlName="mail" type="text" nz-input
-                                        placeholder="Password" />
-                                </nz-input-group>
-                            </nz-form-control>
-                        </nz-form-item>
-                        <nz-form-item>
-                            <nz-form-control nzErrorTip="Please input your Password!">
-                                <nz-input-group nzPrefixIcon="lock">
-                                    <input class="loginInput" formControlName="contraseña" type="password" nz-input
-                                        placeholder="Password" />
-                                </nz-input-group>
-                            </nz-form-control>
-                        </nz-form-item>
-                        <div nz-row class="login-form-margin">
-                            <div nz-col [nzSpan]="12">
-
-                            </div>
-
-                        </div>
+                        <br>
                         <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"
                             (click)="OnLogIn()">Iniciar sesion</button>
 

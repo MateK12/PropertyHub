@@ -1,19 +1,44 @@
-<ng-container id="contTotal">
-    <nz-col [nzXl]="12" nzLg="12" nzMd="12" nzSm="24" nzXs="24">
-        <div>
-            <nz-card style="width:300px;" [nzBordered]="false" nzTitle="Card title">
-                <h1>Property Hub</h1>
-                <br>
-                <h3>Administra tus alquileres con Property Hub</h3>
-            </nz-card>
-            <nz-carousel nzAutoPlay>
-                <div nz-carousel-content>
-                    <h3></h3>
+<div id="contTotal">
+
+    <ng-container>
+        <nz-row>
+
+            <nz-col [nzXl]="12" nzLg="12" nzMd="12" nzSm="24" nzXs="24">
+                <div>
+                    <nz-card style="width:300px;" [nzBordered]="false" nzTitle="Bienvenido">
+                        <h1>Property Hub</h1>
+                        <br>
+                        <h3>Administra tus alquileres con Property Hub</h3>
+                    </nz-card>
+                    <nz-carousel nzAutoPlay>
+                        <div nz-carousel-content>
+                            <h3></h3>
+                        </div>
+                    </nz-carousel>
+                </div><br><br>
+                <div class="slider">
+                    <ul>
+                        <li>
+                            <img src="../../assets/img/descarga.jpeg" alt="">
+                        </li>
+                        <li>
+                            <img src="http://youghaltennisclub.ie/wp-content/uploads/2014/06/Tennis-Wallpaper-High-Definition-700x300.jpg"
+                                alt="">
+                        </li>
+                        <li>
+                            <img src="http://welltechnically.com/wp-content/uploads/2013/08/android-wallpapers-700x300.jpg"
+                                alt="">
+                        </li>
+                        <li>
+                            <img src="http://welltechnically.com/wp-content/uploads/2013/09/android-widescreen-wallpaper-14165-hd-wallpapers-700x300.jpg"
+                                alt="">
+                        </li>
+                    </ul>
                 </div>
-            </nz-carousel>
-        </div>
-    </nz-col>
-    <nz-col [nzXl]="12" nzLg="12" nzMd="12" nzSm="24" nzXs="24">
-        <app-pagina-inicio></app-pagina-inicio>
-    </nz-col>
-</ng-container>
+            </nz-col>
+            <nz-col [nzXl]="12" nzLg="12" nzMd="12" nzSm="24" nzXs="24">
+                <app-pagina-inicio></app-pagina-inicio>
+            </nz-col>
+        </nz-row>
+    </ng-container>
+</div>

@@ -1,13 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
+  baseURL: string = ''
+  constructor(private http: HttpClient) {
 
-  constructor(private http: HttpClient) { }
+    this.baseURL = "http://localhost:3100";
+  }
 
 
+  SingIn(user: any): Observable<any> {
+    return this.http.post(`${this.baseURL}/signIn`, user);
+  }
 
 }
