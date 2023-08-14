@@ -15,5 +15,7 @@ export class LoginServiceService {
   SingIn(user: any): Observable<any> {
     return this.http.post(`${this.baseURL}/signIn`, user);
   }
-
+  CreateLease(lease: any): Observable<any> {
+    return this.http.post(`${this.baseURL}/createLease`, lease)
+  }
 }

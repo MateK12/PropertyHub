@@ -1,15 +1,4 @@
-// const { DataTypes, Sequealize } = require("sequelize");
-// const DBCONFIG = require('./DBConfig');
 
-// const sequealize = new Sequealize( DBCONFIG.DB,
-//     DBCONFIG.USER,
-//     DBCONFIG.PASSWORD,
-//     {
-//         host: DBCONFIG.HOST,
-//         port: DBCONFIG.PORT,
-//         dialect: DBCONFIG.dialect
-
-//     },)
 module.exports = (sequealize, DataTypes) => { //we export a function that returns an object with the information of the table model
     //pass sequelize and DataTypes as arguments,
     const Users = sequealize.define("users", {//sequalize.define("DBName",{DBModel})
@@ -29,6 +18,6 @@ module.exports = (sequealize, DataTypes) => { //we export a function that return
         },
     }
     );
-    return Users //return the 
+    return Users //return the model
 
 }

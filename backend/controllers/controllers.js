@@ -39,7 +39,7 @@ controllers.SignIn = async (req, res) => {
         }
     })
     if (UserExists == null) {
-        res.send({ signedIn: false, messege: "The user doesn't exist" })
+        res.send({ signedIn: false, messege: "El usuario no existe" })
     } else {
         let ValidateUser = await Users.findOne({
             where: {
@@ -51,12 +51,11 @@ controllers.SignIn = async (req, res) => {
                 password,
             }
         })
-        console.log(ValidatePassword);
-        console.log(ValidateUser);
+
         if (ValidatePassword == null || ValidateUser == null) {
-            res.send({ signedIn: false, messege: "The user or/and the password is/are incorrect" })
+            res.send({ signedIn: false, messege: "El usuario y/o contraseña son incorrectas" })
         } else {
-            res.send({ signedIn: true, messege: "Redirectig" })
+            res.send({ signedIn: true, messege: "Inicio de sesion exitoso, redirigiendo", userId: ValidateUser.id })
         }
     }
 }

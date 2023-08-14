@@ -46,9 +46,11 @@ export class InicioSesionComponent implements OnInit {
         next: response => {
           if (response.signedIn) {
             this.messegeFromBack = response.messege;
+            localStorage.setItem("userID", response.userId)
             setTimeout(() => {
               this.router.navigate(['/Dashboard'])
-            }, 5000)
+            }, 5000);
+
           } else {
             this.messegeFromBack = response.messege;
           }

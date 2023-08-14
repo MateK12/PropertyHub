@@ -26,10 +26,11 @@
                 <nz-table #innerTable [nzData]="listOfChildrenData" nzSize="middle" [nzShowPagination]="false">
                     <thead>
                         <tr>
-                            <th>Observacion</th>
                             <th>Coste de propiedad</th>
-                            <th>Monto</th>
-                            <th>pagado</th>
+                            <th>Proyectado</th>
+                            <th>Contacto</th>
+                            <th>Condicion</th>
+                            <th>Observacion</th>
                         </tr>
                     </thead>
     <tbody>
@@ -41,26 +42,7 @@
             </td>
             <td>{{ data.upgradeNum }}</td>
             <td>
-                <span class="table-operation">
-                    <a nz-dropdown class="operation" [nzDropdownMenu]="menu">
-                        Pause
-                        <span nz-icon nzType="down"></span>
-                    </a>
-                    <nz-dropdown-menu #menu="nzDropdownMenu">
-                        <ul nz-menu>
-                            <li nz-menu-item>
-                                <a>Action 1</a>
-                            </li>
-                            <li nz-menu-item>
-                                <a>Action 2</a>
-                            </li>
-                        </ul>
-                    </nz-dropdown-menu>
-                    <nz-divider nzType="vertical"></nz-divider>
-                    <a class="operation">Stop</a>
-                    <nz-divider nzType="vertical"></nz-divider>
-                    <a>More</a>
-                </span>
+                Alquilado
             </td>
         </tr>
     </tbody>

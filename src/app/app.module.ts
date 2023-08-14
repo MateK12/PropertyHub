@@ -28,6 +28,11 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { ModalComponent } from './dashboard/components/navbar/modal/modal.component';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 registerLocaleData(en);
 
@@ -40,6 +45,7 @@ registerLocaleData(en);
     DashboardComponent,
     NavbarComponent,
     TableComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,8 +63,11 @@ registerLocaleData(en);
     NzTableModule,
     NzBadgeModule,
     NzDropDownModule,
-    NzDividerModule
-
+    NzDividerModule,
+    NzModalModule,
+    NzSwitchModule,
+    NzSelectModule,
+    NzDatePickerModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

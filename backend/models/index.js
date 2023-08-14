@@ -21,13 +21,16 @@ sequelize.authenticate() //Conection to the db whit the authenticate() method
 
 db = {};
 users = require('./UserModel')(sequelize, DataTypes); //users equals the function that we get from UserModel.
+leases = require('./LeaseModel')(sequelize, DataTypes)
 //As arguments, we pass sequlize (the intansiation of Sequelize()) and DataTypes (a Sequelize object)
 
 db.users = users;
+db.leases = leases;
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.sequelize.sync({ force: false }) //This line syncs the tables with the DB,{force:false}-> This avoids the deletions of the current rows
+    //if you change the model of any table, then switch force:true !This will delete the current content!
     .then(() => {
         console.log("re-sync executed correctly");
     })
