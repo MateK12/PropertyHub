@@ -14,16 +14,27 @@
         <ng-template ngFor let-data [ngForOf]="nestedTable.data">
             <tr>
                 <td [(nzExpand)]="data.expand"></td>
-                <td>{{ data.name }}</td>
-                <td>{{ data.platform }}</td>
-                <td>{{ data.version }}</td>
-                <td>{{ data.upgradeNum }}</td>
-                <td>{{ data.creator }}</td>
-                <td>{{ data.createdAt }}</td>
+                <td>{{ data.addres }}</td>
+                <td>{{ data.tenant }}</td>
+                <td>${{ data.amount }}</td>
+                <td>
+                    <span *ngIf="data.paid" nz-icon nzType="check" nzTheme="outline"></span>
+                    <span *ngIf="!data.paid" nz-icon nzType="close" nzTheme="outline"></span>
+                </td>
+                <td (click)="OnEdit(data)">
+                    <app-modal-edit></app-modal-edit>
+
+                </td>
+
+                <td>
+
+                    <app-modal-delete propertyToDelete={{data.id}}></app-modal-delete>
+                </td>
+
 
             </tr>
             <tr [nzExpand]="data.expand">
-                <nz-table #innerTable [nzData]="listOfChildrenData" nzSize="middle" [nzShowPagination]="false">
+                <nz-table #innerTable [nzData]="listOfParentData" nzSize="middle" [nzShowPagination]="false">
                     <thead>
                         <tr>
                             <th>Coste de propiedad</th>
@@ -34,16 +45,18 @@
                         </tr>
                     </thead>
     <tbody>
-        <tr *ngFor="let data of innerTable.data">
-            <td>{{ data.date }}</td>
-            <td>{{ data.name }}</td>
+        <tr>
+            <td>${{ data.propertyCost }}</td>
+            <td>${{ data.amount }}</td>
+            <td>{{data.contact}}</td>
             <td>
-                <nz-badge [nzStatus]="'success'" [nzText]="'Finished'"></nz-badge>
+                <p *ngIf="data.condition == '1'">Alquilado</p>
+                <p *ngIf="data.condition == '2'">Contrato</p>
+                <p *ngIf="data.condition == '3'">Sin alquilar</p>
+
             </td>
-            <td>{{ data.upgradeNum }}</td>
-            <td>
-                Alquilado
-            </td>
+            <td>{{data.observation}}</td>
+
         </tr>
     </tbody>
 </nz-table>

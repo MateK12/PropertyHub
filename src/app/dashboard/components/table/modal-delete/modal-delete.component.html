@@ -1,0 +1,10 @@
+<button nz-button nzType="primary" nzDanger (click)="showModal()">
+    <span nz-icon nzType="delete" nzTheme="outline"></span>
+</button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Esta por borrar una propiedad" (nzOnCancel)="handleCancel()"
+    (nzOnOk)="DeleteProperty()">
+    <ng-container *nzModalContent>
+        <h4>Cuidado esta por borrar una propiedad</h4>
+        <h6>¿Esta seguro que quiere hacerlo?</h6>
+    </ng-container>
+</nz-modal>

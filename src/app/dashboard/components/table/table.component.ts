@@ -1,14 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 interface ParentItemData {
+  id: number;
   key: number;
-  name: string;
-  platform: string;
-  version: string;
-  upgradeNum: number | string;
-  creator: string;
-  createdAt: string;
+  addres: string;
+  tenant: string;
+  amount: number;
+  paid: string;
+  edit: string;
+  delete: string;
   expand: boolean;
+  propertyCost: number;
+  contact: string;
+  condition: string;
+  observation: string
 }
 
 interface ChildrenItemData {
@@ -25,28 +31,29 @@ interface ChildrenItemData {
 export class TableComponent {
   listOfParentData: ParentItemData[] = [];
   listOfChildrenData: ChildrenItemData[] = [];
-
+  constructor(private TableService: LoginServiceService) { }
   ngOnInit(): void {
-    for (let i = 0; i < 3; ++i) {
-      this.listOfParentData.push({
-        key: i,
-        name: 'Screem',
-        platform: 'iOS',
-        version: '10.3.4.5654',
-        upgradeNum: 500,
-        creator: 'Jack',
-        createdAt: '2014-12-24 23:12:00',
-        expand: false
-      });
-    }
-    for (let i = 0; i < 3; ++i) {
-      this.listOfChildrenData.push({
-        key: i,
-        date: '2014-12-24 23:12:00',
-        name: 'This is production name',
-        upgradeNum: 'Upgraded: 56'
-      });
-    }
-  }
+    this.TableService.GetLeases(localStorage.getItem('userID')).subscribe({
+      next: response => {
+        response.forEach((property: any) => {
+          property.expand = false
+        });
 
+        console.log(response);
+        this.listOfParentData = response
+
+      }
+    })
+
+
+  }
+  Logsmth(log: any) {
+    console.log(log);
+    console.log(typeof (log));
+  }
+  OnEdit(data: any) {
+    console.log(data);
+    let leaseToEdit = JSON.stringify(data);
+    localStorage.setItem('leaseToEdit', leaseToEdit)
+  }
 }

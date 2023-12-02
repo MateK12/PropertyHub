@@ -1,0 +1,107 @@
+<button nz-button [nzType]="'primary'" (click)="showModal()"> <span nz-icon nzType="edit" nzTheme="outline"></span>
+</button>
+<nz-modal nzWidth="700px" [(nzVisible)]="isVisible" nzTitle="Editar" (nzOnCancel)="handleCancel()"
+    (nzOnOk)="OnSubmit()">
+    <ng-container *nzModalContent>
+        <form nz-form [formGroup]="form" class="ant-advanced-search-form">
+            <div nz-row [nzGutter]="24">
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Direccion</nz-form-label>
+                        <nz-form-control>
+                            <input class="modalInput" nz-input placeholder="Direccion" formControlName="addres" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <br>
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Condicion</nz-form-label>
+                        <nz-form-control>
+                            <nz-select (nzOpenChange)="OnChangeCondition()" class="modalInput"
+                                formControlName="condition">
+                                <nz-option nzValue="1" nzLabel="Alquilado"></nz-option>
+                                <nz-option nzValue="2" nzLabel="Contrato"></nz-option>
+                                <nz-option nzValue="3" nzLabel="Sin alquilar"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+            </div>
+            <div *ngIf="conditionState == 1 || conditionState == 2" nz-row [nzGutter]="24">
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Inquilino</nz-form-label>
+                        <nz-form-control>
+                            <input class="modalInput" nz-input placeholder="Inquilino" formControlName="tenant" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <br>
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Monto</nz-form-label>
+                        <nz-form-control>
+                            <input class="modalInput" nz-input placeholder="Monto" formControlName="amount" />
+                        </nz-form-control>
+                        <nz-form-label style="margin-left: 10px;">Pagado</nz-form-label>
+                        <nz-form-control>
+                            <nz-switch class="modalInput" [ngModel]="true" nzCheckedChildren="✓" nzUnCheckedChildren="x"
+                                formControlName="paid"></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+
+                    </nz-form-item>
+                </div>
+            </div>
+            <div *ngIf="conditionState == 1 || conditionState == 2" nz-row [nzGutter]="24">
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Coste de propiedad</nz-form-label>
+                        <nz-form-control>
+                            <input class="modalInput" nz-input placeholder="Costo de propiedad"
+                                formControlName="propertyCost" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <br>
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Contacto</nz-form-label>
+                        <nz-form-control>
+                            <input class="modalInput" nz-input placeholder="Contacto" formControlName="contact" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div *ngIf="conditionState == 1 || conditionState == 2" nz-row [nzGutter]="24">
+
+                <br>
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Observacion</nz-form-label>
+                        <nz-form-control>
+                            <textarea class="modalInput" formControlName="observation" placeholder="observacion" name=""
+                                id="" cols="60" rows="3"></textarea>
+
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Alquilado desde</nz-form-label>
+                        <nz-form-control>
+                            <nz-date-picker lass="modalInput" formControlName="leasedSince"></nz-date-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+        </form>
+    </ng-container>
+</nz-modal>

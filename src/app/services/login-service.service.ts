@@ -18,4 +18,7 @@ export class LoginServiceService {
   CreateLease(lease: any): Observable<any> {
     return this.http.post(`${this.baseURL}/createLease`, lease)
   }
+  GetLeases(id: any): Observable<any> {
+    return this.http.get(`${this.baseURL}/getLeases/${id}`)
+  }
 }

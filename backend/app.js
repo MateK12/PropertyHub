@@ -22,6 +22,12 @@ app.post('/signIn', controllers.SignIn);
 
 app.post('/createLease', LeaseControllers.CreateLease);
 
+app.get('/getLeases/:id', LeaseControllers.GetLeases)
+
+app.delete('/deleteLease/:id', LeaseControllers.DeleteLease)
+
+app.put('/editLease/:id', LeaseControllers.EditLease)
+
 app.listen(PORT, () => {
     console.log("The server is running on port " + PORT); //this line runs the server on the port 3100
 })
