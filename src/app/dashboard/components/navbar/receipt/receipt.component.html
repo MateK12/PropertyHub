@@ -1,0 +1,53 @@
+<span (click)="showModal()">Generar recibo</span>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Generador de recibo" (nzOnCancel)="handleCancel()" (nzOnOk)="OnCreatePdf()"
+    [nzOkLoading]="isOkLoading">
+    <div *nzModalContent>
+        <h4 style="text-align: center; align-items: center;">Crear recibo</h4>
+        <form action="" [formGroup]="form">
+            <nz-form-item>
+                <nz-form-label [nzSm]=" 6" [nzXs]="24" nzFor="amount">Monto total</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="ingrese monto porfavor">
+                    <input nz-input formControlName="amount" id="amount" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]=" 6" [nzXs]="24" nzFor="amount">Pagado</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="ingrese monto porfavor">
+                    <input nz-input formControlName="paidAmount" id="amount" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tenant">Inquilino</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="ingrese Inquilino porfavor">
+                    <input nz-input formControlName="tenant" id="tenant" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="owner">Locatario</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="ingrese Locatario porfavor">
+                    <input nz-input formControlName="owner" id="owner" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="owner">Direccion</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Ingrese periodo porfavor">
+                    <input nz-input formControlName="adress" id="owner" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="owner">Periodo</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Ingrese periodo porfavor">
+                    <nz-date-picker nzMode="month" formControlName="period"></nz-date-picker>
+
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+        <!-- <nz-list nzBordered nzSize="small">
+            <nz-list-header><b>Propiedades</b></nz-list-header>
+            <nz-list-item *ngFor="let lease of leases">{{lease}} <span (click)="OnCreatePdf()" nz-icon nzType="file-pdf"
+                    nzTheme="outline"></span></nz-list-item>
+        </nz-list> -->
+
+    </div>
+
+</nz-modal>

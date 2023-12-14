@@ -33,10 +33,11 @@ import { ModalComponent } from './dashboard/components/navbar/modal/modal.compon
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzListModule } from 'ng-zorro-antd/list';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ModalEditComponent } from './dashboard/components/table/modal-edit/modal-edit.component';
 import { ModalDeleteComponent } from './dashboard/components/table/modal-delete/modal-delete.component';
-
+import { ReceiptComponent } from './dashboard/components/navbar/receipt/receipt.component';
 
 registerLocaleData(en);
 
@@ -52,6 +53,7 @@ registerLocaleData(en);
     ModalComponent,
     ModalEditComponent,
     ModalDeleteComponent,
+    ReceiptComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,7 @@ registerLocaleData(en);
     NzSelectModule,
     NzDatePickerModule,
     NzIconModule,
+    NzListModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

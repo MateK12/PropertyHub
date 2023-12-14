@@ -1,7 +1,7 @@
 <div>
     <li (click)="showModal()">Agregar propiedad</li>
-    <nz-modal nzWidth="700px" [(nzVisible)]="isVisible" nzTitle="Modal" nzOkText="Agregar" nzCancelText="Cancelar"
-        (nzOnOk)="OnSubmit()" (nzOnCancel)="handleCancel()">
+    <nz-modal nzWidth="700px" [(nzVisible)]="isVisible" nzTitle="Agregar propiedad" nzOkText="Agregar"
+        nzCancelText="Cancelar" (nzOnOk)="OnSubmit()" (nzOnCancel)="handleCancel()">
         <ng-container *nzModalContent>
             <form nz-form [formGroup]="form" class="ant-advanced-search-form">
                 <div nz-row [nzGutter]="24">
