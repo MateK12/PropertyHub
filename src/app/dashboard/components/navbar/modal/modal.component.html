@@ -62,16 +62,6 @@
                 <div *ngIf="conditionState == 1 || conditionState == 2" nz-row [nzGutter]="24">
                     <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
                         <nz-form-item>
-                            <nz-form-label>Coste de propiedad</nz-form-label>
-                            <nz-form-control>
-                                <input class="modalInput" nz-input placeholder="Costo de propiedad"
-                                    formControlName="propertyCost" />
-                            </nz-form-control>
-                        </nz-form-item>
-                    </div>
-                    <br>
-                    <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
-                        <nz-form-item>
                             <nz-form-label>Contacto</nz-form-label>
                             <nz-form-control>
                                 <input class="modalInput" nz-input placeholder="Contacto" formControlName="contact" />
@@ -101,7 +91,55 @@
                         </nz-form-item>
                     </div>
                 </div>
+                <div *ngIf="conditionState == 1 || conditionState == 2" nz-row [nzGutter]="24">
 
+                    <br>
+                    <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                        <nz-form-item>
+                            <nz-form-label>Titular</nz-form-label>
+                            <nz-form-control>
+                                <textarea class="modalInput" formControlName="owner" placeholder="observacion" name=""
+                                    id="" cols="60" rows="3"></textarea>
+
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                        <nz-form-item>
+                            <nz-form-label>Vencimiento del contrato</nz-form-label>
+                            <nz-form-control>
+                                <nz-date-picker lass="modalInput" formControlName="expiryDate"></nz-date-picker>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+                <div *ngIf="conditionState == 1 || conditionState == 2" nz-row [nzGutter]="24">
+
+                    <br>
+                    <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                        <nz-form-item>
+                            <nz-form-label>Proxima Actualizacion</nz-form-label>
+                            <nz-form-control>
+                                <nz-date-picker lass="modalInput" formControlName="nextUpdate"
+                                    [nzFormat]="'yyyy-MM-dd'"></nz-date-picker>
+
+
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                        <nz-form-item>
+                            <nz-form-label>Metodo de pago</nz-form-label>
+                            <nz-form-control>
+                                <nz-select class="modalInput" formControlName="method">
+                                    <nz-option nzValue="Efectivo" nzLabel="Efectivo"></nz-option>
+                                    <nz-option nzValue="Deposito" nzLabel="Deposito"></nz-option>
+                                    <nz-option nzValue="Cheque" nzLabel="Cheque"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
             </form>
         </ng-container>
     </nz-modal>

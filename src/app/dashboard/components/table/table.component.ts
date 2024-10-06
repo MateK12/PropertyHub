@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { DatePipe } from '@angular/common';
+import { formatDate } from '@angular/common';
 
 interface ParentItemData {
   id: number;
@@ -14,7 +16,11 @@ interface ParentItemData {
   propertyCost: number;
   contact: string;
   condition: string;
-  observation: string
+  observation: string;
+  leasedSince: Date;
+  expiryDate: Date;
+  nextUpdate: Date;
+  method: string;
 }
 
 interface ChildrenItemData {
@@ -31,14 +37,19 @@ interface ChildrenItemData {
 export class TableComponent {
   listOfParentData: ParentItemData[] = [];
   listOfChildrenData: ChildrenItemData[] = [];
-  constructor(private TableService: LoginServiceService) { }
+  constructor(private TableService: LoginServiceService, private datePipe: DatePipe) { }
   ngOnInit(): void {
     this.TableService.GetLeases(localStorage.getItem('userID')).subscribe({
       next: response => {
         response.forEach((property: any) => {
           property.expand = false
         });
+        response.forEach(e => {
+          e.leasedSince = formatDate(e.leasedSince, 'dd-MM-yyyy', 'en-US');
+          e.expiryDate = formatDate(e.expiryDate, 'dd-MM-yyyy', 'en-US');
+          e.nextUpdate = formatDate(e.nextUpdate, 'dd-MM-yyyy', 'en-US')
 
+        });
         console.log(response);
         this.listOfParentData = response
 
@@ -55,5 +66,10 @@ export class TableComponent {
     console.log(data);
     let leaseToEdit = JSON.stringify(data);
     localStorage.setItem('leaseToEdit', leaseToEdit)
+  }
+  OnGenerateReceipt(data: any) {
+    localStorage.removeItem('receiptData')
+    let receiptData = JSON.stringify(data);
+    localStorage.setItem('receiptData', receiptData);
   }
 }

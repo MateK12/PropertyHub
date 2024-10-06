@@ -101,7 +101,51 @@
                     </nz-form-item>
                 </div>
             </div>
+            <div *ngIf="conditionState == 1 || conditionState == 2" nz-row [nzGutter]="24">
 
+                <br>
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Titular</nz-form-label>
+                        <nz-form-control>
+                            <textarea class="modalInput" formControlName="owner" placeholder="observacion" name="" id=""
+                                cols="60" rows="3"></textarea>
+
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Metodo</nz-form-label>
+                        <nz-form-control>
+                            <nz-select class="modalInput" formControlName="method">
+                                <nz-option nzValue="Efectivo" nzLabel="Efectivo"></nz-option>
+                                <nz-option nzValue="Deposito" nzLabel="Deposito"></nz-option>
+                                <nz-option nzValue="Cheque" nzLabel="Cheque"></nz-option>
+                            </nz-select> </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div *ngIf="conditionState == 1 || conditionState == 2" nz-row [nzGutter]="24">
+
+                <br>
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Siguiente actualizacion</nz-form-label>
+                        <nz-form-control>
+                            <nz-date-picker lass="modalInput" formControlName="nextUpdate"></nz-date-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzXl="12" nzLg="12" nzMd="12" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label>Vencimiento</nz-form-label>
+                        <nz-form-control>
+                            <nz-date-picker lass="modalInput" formControlName="expiryDate"></nz-date-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
         </form>
     </ng-container>
 </nz-modal>

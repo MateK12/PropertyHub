@@ -37,6 +37,22 @@ module.exports = (sequealize, DataTypes) => { //we export a function that return
             type: DataTypes.DATE,
             allowNull: true
         },
+        nextUpdate: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        owner: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        method: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        expiryDate: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
         userFK: {
             type: DataTypes.INTEGER,
             references: {

@@ -1,4 +1,8 @@
-<span (click)="showModal()">Generar recibo</span>
+<button nz-button nzType="default">
+    <span nz-icon nzType="file-pdf" nzTheme="outline" (click)="showModal()"></span>
+
+</button>
+
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Generador de recibo" (nzOnCancel)="handleCancel()" (nzOnOk)="OnCreatePdf()"
     [nzOkLoading]="isOkLoading">
     <div *nzModalContent>
@@ -14,6 +18,7 @@
                 <nz-form-label [nzSm]=" 6" [nzXs]="24" nzFor="amount">Pagado</nz-form-label>
                 <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="ingrese monto porfavor">
                     <input nz-input formControlName="paidAmount" id="amount" />
+                    <nz-switch style="margin-left: 20px;" nz-checkbox (click)="OnChangeModel()"></nz-switch>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
@@ -31,7 +36,7 @@
             <nz-form-item>
                 <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="owner">Direccion</nz-form-label>
                 <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Ingrese periodo porfavor">
-                    <input nz-input formControlName="adress" id="owner" />
+                    <input nz-input formControlName="addres" id="owner" />
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>

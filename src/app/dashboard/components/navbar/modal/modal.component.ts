@@ -24,11 +24,14 @@ export class ModalComponent implements OnInit {
       tenant: [null, [Validators.maxLength(40)]],
       amount: [null, [Validators.maxLength(20)]],
       paid: [null],
-      propertyCost: [null, [Validators.required, Validators.maxLength(20)]],
       contact: [null, [Validators.required, Validators.maxLength(40)]],
       condition: ['', [Validators.required, Validators.maxLength(20)]],
       observation: [null, [Validators.required, Validators.maxLength(200)]],
       leasedSince: [null, [Validators.maxLength(20)]],
+      nextUpdate: [null, [Validators.required]],
+      owner: [null, [Validators.required]],
+      method: [null, [Validators.required]],
+      expiryDate: [null, [Validators.required]],
       userFK: [localStorage.getItem('userID')]
     });
   }
@@ -38,6 +41,13 @@ export class ModalComponent implements OnInit {
     this.dashboardHTTP.CreateLease(newLease).subscribe({
       next: response => {
         console.log(response);
+        if (response.success) {
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        } else {
+          console.log(response);
+        }
       }
     })
     this.isVisible = false;

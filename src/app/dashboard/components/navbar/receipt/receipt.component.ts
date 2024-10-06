@@ -16,7 +16,7 @@ export class ReceiptComponent implements OnInit {
   isOkLoading = false;
   form: any;
   leases: Array<string> = [];
-
+  info: any;
   constructor(private receiptService: LoginServiceService, private fb: FormBuilder) { }
   ngOnInit(): void {
 
@@ -32,7 +32,12 @@ export class ReceiptComponent implements OnInit {
   }
 
   showModal(): void {
-    this.isVisible = true;
+    setTimeout(() => {
+      this.info = JSON.parse(localStorage.getItem('receiptData'));
+      this.form.patchValue(this.info)
+      this.isVisible = true;
+    }, 500)
+
   }
 
 
@@ -48,8 +53,18 @@ export class ReceiptComponent implements OnInit {
       owner: [null, [Validators.required]],
       period: [null, [Validators.required]],
       paidAmount: [null, [Validators.required]],
-      adress: [null],
+      addres: [null],
     });
+  }
+  OnChangeModel() {
+    let data = this.form.getRawValue();
+    if (data.paidAmount == data.amount) {
+      console.log('fadsfads');
+
+      this.form.patchValue({ paidAmount: 0 })
+    } else {
+      this.form.patchValue({ paidAmount: data.amount })
+    }
   }
   OnCreatePdf() {
     this.isOkLoading = true;
@@ -57,7 +72,7 @@ export class ReceiptComponent implements OnInit {
       this.isVisible = false;
       this.isOkLoading = false;
     }, 3000);
-    let info = this.form.getRawValue();
+    this.info = this.form.getRawValue();
     const doc = new jsPDF();
     var content = "Para locatario";
 
@@ -70,23 +85,24 @@ export class ReceiptComponent implements OnInit {
 
     // Add separator line
     doc.line(10, 30, 200, 30);
-    let formatedMonth = info.period.getMonth();
-    let formatedYear = info.period.getFullYear();
+
+    let formatedMonth = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(this.info.period);
+    let formatedYear = this.info.period.getFullYear();
     console.log(formatedMonth);
     console.log(formatedYear);
-    doc.text(`Recibi del Sr/a.: ${info.tenant} la suma de PESOS $${info.amount} en concepto
-     de cobro de alquiler correspondiente al periodo de ${formatedMonth + 1} ${formatedYear} 
-     por el inmueble ubicado en ${info.adress}`, 10, 40);
+    doc.text(`Recibi del Sr/a.: ${this.info.tenant} la suma de PESOS $${this.info.amount} en concepto
+     de cobro de alquiler correspondiente al periodo de ${formatedMonth} ${formatedYear} 
+     por el inmueble ubicado en ${this.info.addres}`, 10, 40);
 
 
     doc.line(10, 80, 200, 80);
 
     // Add total, pagado, and resta information
-    doc.text(`Total a pagar: $${info.amount}`, 10, 90);
-    doc.text(`Pagado: $${info.paidAmount}`, 10, 100);
+    doc.text(`Total a pagar: $${this.info.amount}`, 10, 90);
+    doc.text(`Pagado: $${this.info.paidAmount}`, 10, 100);
 
-    let leftToPay = info.amount - info.paidAmount;
-    doc.text(`Resta: $${leftToPay}`, 10, 110);
+    let leftToPay = this.info.amount - this.info.paidAmount;
+    doc.text(`Resta: $${0}`, 10, 110);
 
     // Add signature and clarification
 

@@ -30,6 +30,10 @@ export class ModalEditComponent implements OnInit {
       condition: ['', [Validators.required, Validators.maxLength(20)]],
       observation: [null, [Validators.required, Validators.maxLength(200)]],
       leasedSince: [null, [Validators.maxLength(20)]],
+      nextUpdate: [null, [Validators.required]],
+      owner: [null, [Validators.required]],
+      method: [null, [Validators.required]],
+      expiryDate: [null, [Validators.required]],
       userFK: [localStorage.getItem('userID')]
     });
   }
@@ -39,6 +43,13 @@ export class ModalEditComponent implements OnInit {
     this.dashboardHTTP.EditLease(this.leaseEditing.id, this.form.getRawValue()).subscribe({
       next: response => {
         console.log(response);
+        if (response.success) {
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        } else {
+          console.log(response);
+        }
       }
     })
     this.isVisible = false;
@@ -55,6 +66,10 @@ export class ModalEditComponent implements OnInit {
     setTimeout(() => {
       let p = localStorage.getItem('leaseToEdit')
       this.leaseEditing = JSON.parse(p!);
+      this.leaseEditing.leasedSince = new Date(this.leaseEditing.leasedSince);
+      this.leaseEditing.nextUpdate = new Date(this.leaseEditing.nextUpdate);
+      this.leaseEditing.expiryDate = new Date(this.leaseEditing.expiryDate)
+
       this.form.patchValue(this.leaseEditing)
     }, 100)
   }

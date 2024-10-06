@@ -11,7 +11,7 @@ LeaseControllers.CreateLease = async (req, res) => {
         })
         if (LeaseExists == null) {
             const CreateLease = await Leases.create(req.body);
-            res.send({ "messege": "Lease added succesfuly" })
+            res.send({ "messege": "Lease added succesfuly", 'success': true })
         } else {
             res.send("This lease already exists")
         }
@@ -37,7 +37,7 @@ LeaseControllers.DeleteLease = async (req, res) => {
             where: { id: id }
         })
         console.log(deleteLeases);
-        res.send({ msg: "Alquiler eliminado con exito" })
+        res.send({ msg: "Alquiler eliminado con exito", 'success': true })
     } catch (error) {
         console.log('An error ocurred while deleting a lease ' + error);
     }
@@ -47,7 +47,7 @@ LeaseControllers.EditLease = async (req, res) => {
         console.log(req.body);
         let id = parseInt(req.params.id)
         let EditLeases = await Leases.update(req.body, { where: { id, id } })
-        res.send({ msg: 'Alquiler editado con exito' })
+        res.send({ msg: 'Alquiler editado con exito', 'success': true })
     } catch (error) {
         console.log('An error ocurred while editing a lease ' + error);
     }

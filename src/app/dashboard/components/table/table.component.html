@@ -5,6 +5,7 @@
             <th>Direccion</th>
             <th>Inquilino</th>
             <th>Monto</th>
+            <th>Proxima actualizacion</th>
             <th>Pagado</th>
             <th>Editar</th>
             <th>Eliminar</th>
@@ -17,6 +18,7 @@
                 <td>{{ data.addres }}</td>
                 <td>{{ data.tenant }}</td>
                 <td>${{ data.amount }}</td>
+                <td>{{data.nextUpdate}}</td>
                 <td>
                     <span *ngIf="data.paid" nz-icon nzType="check" nzTheme="outline"></span>
                     <span *ngIf="!data.paid" nz-icon nzType="close" nzTheme="outline"></span>
@@ -37,26 +39,24 @@
                 <nz-table #innerTable [nzData]="listOfParentData" nzSize="middle" [nzShowPagination]="false">
                     <thead>
                         <tr>
-                            <th>Coste de propiedad</th>
-                            <th>Proyectado</th>
+                            <th>Alquilado desde</th>
+                            <th>Metodo</th>
+                            <th>Vencimiento</th>
                             <th>Contacto</th>
-                            <th>Condicion</th>
                             <th>Observacion</th>
+                            <th>Recibo</th>
                         </tr>
                     </thead>
     <tbody>
         <tr>
-            <td>${{ data.propertyCost }}</td>
-            <td>${{ data.amount }}</td>
+            <td>{{ data.leasedSince }}</td>
+            <td>{{data.method}}</td>
+            <td>{{data.expiryDate}}</td>
             <td>{{data.contact}}</td>
-            <td>
-                <p *ngIf="data.condition == '1'">Alquilado</p>
-                <p *ngIf="data.condition == '2'">Contrato</p>
-                <p *ngIf="data.condition == '3'">Sin alquilar</p>
-
-            </td>
             <td>{{data.observation}}</td>
-
+            <td (click)="OnGenerateReceipt(data)">
+                <app-receipt></app-receipt>
+            </td>
         </tr>
     </tbody>
 </nz-table>
